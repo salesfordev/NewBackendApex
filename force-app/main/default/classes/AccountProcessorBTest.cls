@@ -1,5 +1,5 @@
 @isTest
-public with sharing class TestAccountProcessorBatch {
+public with sharing class AccountProcessorBTest {
     @TestSetup static void makeData(){
          List<Account> accountsTest = new List<Account>();
          List<Order> ordersTest = new List<Order>();
@@ -43,11 +43,20 @@ public with sharing class TestAccountProcessorBatch {
         }
         update ordersTest;
     }
+
     @isTest public static void TestAccountProcessorBatch() {
         Test.startTest();
         AccountProcessorB uca = new AccountProcessorB();
         Id batchId = Database.executeBatch(uca);
         Test.stopTest();
-
     }
+    @isTest public static void TestMyTeamOrdersController(){
+        MyTeamOrdersController controller = new MyTeamOrdersController();
+
+        Test.startTest();
+        decimal ordersSum = controller.SumOders;
+        Test.stopTest();
+        System.assertEquals(10*10*150, ordersSum);
+    }
+   
 }

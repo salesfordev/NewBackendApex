@@ -1,4 +1,4 @@
-Global with sharing class AP01Account {
+Global with sharing class UpdateChiffreCA {
     global static void updateChiffreAffaire(List<Account> accountsWithOrders) {
         for (Account myAccount : accountsWithOrders){
             myAccount.Chiffre_d_affaire__c = 0;
