@@ -3,7 +3,7 @@ public with sharing class HandlerUpdateAccountCA {
         set<Id> setAccountIds = new set<Id>();
     List<Account> accountToUpdate = new List<Account>(); 
     for(integer i=0; i< orders.size(); i++){
-      //  Order newOrder= trigger.new[i];
+      
        setAccountIds.add(orders[i].AccountId);
        
     }
