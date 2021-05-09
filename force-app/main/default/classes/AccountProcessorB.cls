@@ -7,7 +7,9 @@ global with sharing class AccountProcessorB implements Database.Batchable<sObjec
        
     global Database.QueryLocator start(Database.BatchableContext info){ 
         // liste des comptes avec commandes actives
-        return Database.getQueryLocator('SELECT Id, chiffre_d_affaire__c ,(SELECT TotalAmount FROM orders WHERE Status =\'Ordered\') from Account WHERE id IN (Select AccountId From Order WHERE Status = \'Ordered\')');
+        return Database.getQueryLocator(
+            'SELECT Id, chiffre_d_affaire__c ,(SELECT TotalAmount FROM orders WHERE Status =\'Ordered\') from Account 
+             WHERE id IN (Select AccountId From Order WHERE Status = \'Ordered\')');
  
     }
     // calcul du chiffre d'affaire
